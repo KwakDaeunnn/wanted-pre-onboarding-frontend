@@ -19,19 +19,19 @@ const Signup = () => {
 
         // 이메일 유효성 검사 (@ 포함 여부 확인)
         if (!values.email.includes('@')) {
-            setEmailError('이메일은 @ 문자를 포함해야 합니다.');
+            setEmailError('이메일 형식에 맞지 않습니다.');
         } else {
             setEmailError('');
         }
 
         // 비밀번호 유효성 검사 (8자 이상)
         if (values.password.length < 8) {
-            setPasswordError('비밀번호는 8자 이상이어야 합니다.');
+            setPasswordError('비밀번호 형식에 맞지 않습니다.');
         } else {
             setPasswordError('');
         }
 
-        // 유효성 검사 통과 시 로그인 실행
+        // 유효성 검사 통과 시 회원가입 후 로그인 페이지 이동
         if (!emailError && !passwordError) {
             axios({
                 url: `https://www.pre-onboarding-selection-task.shop/auth/signup`,
@@ -64,14 +64,16 @@ const Signup = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h2>회원가입</h2>
-            <div>
+            <div className='sign-box'>
+                <h2>회원가입</h2>
+                <p className='condition-message'>
+                    *이메일은 @를 포함해야 하며, 비밀번호는 8자 이상 입력해주세요.
+                </p>
                 <div>
                     <label>이메일</label>
                     <input
                         data-testid="email-input"
                         type="text"
-                        name="email"
                         placeholder='example@abc.com'
                         onChange={handleChange}
                         value={values.email}
@@ -83,15 +85,14 @@ const Signup = () => {
                     <input
                         data-testid="password-input"
                         type="password"
-                        name="password"
-                        placeholder='******** (8자 이상)'
+                        placeholder='********'
                         onChange={handleChange}
                         value={values.password}
                     />
                 </div>
                 {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
                 <div>
-                    <button
+                    <button className='submit-button'
                         data-testid="signup-button"
                         type="submit"
                         disabled={emailError || passwordError}

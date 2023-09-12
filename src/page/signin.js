@@ -18,13 +18,13 @@ const Signin = () => {
         e.preventDefault();
 
         if (!values.email.includes('@')) {
-            setEmailError('이메일은 @ 문자를 포함해야 합니다.');
+            setEmailError('이메일 형식에 맞지 않습니다.');
         } else {
             setEmailError('');
         }
 
         if (values.password.length < 8) {
-            setPasswordError('비밀번호는 8자 이상이어야 합니다.');
+            setPasswordError('비밀번호 형식에 맞지 않습니다.');
         } else {
             setPasswordError('');
         }
@@ -63,14 +63,13 @@ const Signin = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h2>로그인</h2>
-            <div>
+            <div className='sign-box'>
+                <h2>로그인</h2>
                 <div>
                     <label>이메일</label>
                     <input
                         data-testid="email-input"
                         type="text"
-                        name="email"
                         placeholder="example@abc.com"
                         onChange={handleChange}
                         value={values.email}
@@ -82,7 +81,6 @@ const Signin = () => {
                     <input
                         data-testid="password-input"
                         type="password"
-                        name="password"
                         placeholder="******** (8자 이상)"
                         onChange={handleChange}
                         value={values.password}
@@ -90,7 +88,7 @@ const Signin = () => {
                 </div>
                 {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
                 <div>
-                    <button
+                    <button className='submit-button'
                         data-testid="signin-button"
                         type="submit"
                         disabled={emailError || passwordError}

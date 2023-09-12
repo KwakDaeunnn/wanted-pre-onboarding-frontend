@@ -92,8 +92,8 @@ function TodoList() {
 
 
   return (
-    <div>
-      <h1>Todo List</h1>
+    <div className='sign-box'>
+      <h2>Todo List</h2>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
@@ -108,7 +108,7 @@ function TodoList() {
               {editId === todo.id ? (
                 <input
                   value={editedTodo}
-                  onChange={(e) => setEditedTodo(e.target.value)}
+                  onChange={e => setEditedTodo(e.target.value)}
                 />
               ) : (
                 <span className={todo.isCompleted ? 'completed' : ''}>
@@ -135,7 +135,7 @@ function TodoList() {
           data-testid="new-todo-input"
           type="text"
           value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
+          onChange={e => setNewTodo(e.target.value)}
         />
         <button data-testid="new-todo-add-button" onClick={createTodo}>
           추가

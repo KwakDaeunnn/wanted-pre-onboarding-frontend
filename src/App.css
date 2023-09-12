@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.condition-message {
+  color: gray;
+  font-size: 14px;
+}
+
+.sign-box {
+  border: 1px solid black;
+  border-radius: 3px;
+  margin: 10px;
+  padding: 0 20px 30px 20px;
+  width: 22%;
+}
+
+.submit-button {
+  margin-top: 10px;
+}
