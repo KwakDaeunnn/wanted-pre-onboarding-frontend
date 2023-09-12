@@ -44,7 +44,10 @@ const Signup = () => {
                     password: values.password,
                 }
             }).then(res => {
-                navigate('/signin')
+                if (res.status === 201) {
+                    console.log('회원가입 성공');
+                    navigate('/signin')
+                }
             }).catch(err => {
                 console.error('회원가입 오류 발생', err);
                 alert(err.response.data.message);
