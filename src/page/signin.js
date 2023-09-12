@@ -42,10 +42,13 @@ const Signin = () => {
                 },
             }).then(res => {
                 if (res.status === 200) {
+                    localStorage.setItem('access_token', res.data.access_token);
+                    console.log('로그인 성공');
+                    console.log(localStorage.getItem('access_token'));
                     navigate('/todo');
                 }
-            }).catch((err) => {
-                console.error('회원가입 오류 발생', err);
+            }).catch(err => {
+                console.error('로그인 오류', err);
                 alert(err.response.data.message);
             });
         }
