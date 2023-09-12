@@ -12,18 +12,14 @@ const Signup = () => {
         if (localStorage.getItem('token') !== null) {
             navigate('/todo');
         }
-    }, []);
+    }, [navigate]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        let hasEmailError = false; // 이메일 에러 발생 여부 체크
-        let hasPasswordError = false; // 비밀번호 에러 발생 여부 체크
-
         // 이메일 유효성 검사 (@ 포함 여부 확인)
         if (!values.email.includes('@')) {
             setEmailError('이메일은 @ 문자를 포함해야 합니다.');
-            hasEmailError = true;
         } else {
             setEmailError('');
         }
@@ -31,7 +27,6 @@ const Signup = () => {
         // 비밀번호 유효성 검사 (8자 이상)
         if (values.password.length < 8) {
             setPasswordError('비밀번호는 8자 이상이어야 합니다.');
-            hasPasswordError = true;
         } else {
             setPasswordError('');
         }
@@ -50,7 +45,7 @@ const Signup = () => {
                 }
             }).then(res => {
                 navigate('/signin')
-            }).catch(err=>{
+            }).catch(err => {
                 console.error('회원가입 오류 발생', err);
                 alert(err.response.data.message);
             })
@@ -96,7 +91,8 @@ const Signup = () => {
                     <button
                         data-testid="signup-button"
                         type="submit"
-                        disabled={emailError || passwordError}>
+                        disabled={emailError || passwordError}
+                    >
                         회원가입
                     </button>
                 </div>

@@ -12,31 +12,26 @@ const Signin = () => {
         if (localStorage.getItem('token') !== null) {
             navigate('/todo');
         }
-    }, []);
+    }, [navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        let hasEmailError = false;
-        let hasPasswordError = false;
-
         if (!values.email.includes('@')) {
             setEmailError('이메일은 @ 문자를 포함해야 합니다.');
-            hasEmailError = true;
         } else {
             setEmailError('');
         }
 
         if (values.password.length < 8) {
             setPasswordError('비밀번호는 8자 이상이어야 합니다.');
-            hasPasswordError = true;
         } else {
             setPasswordError('');
         }
 
         if (!emailError && !passwordError) {
             axios({
-                url: 'https://www.pre-onboarding-selection-task.shop/auth/signup',
+                url: 'https://www.pre-onboarding-selection-task.shop/auth/signin',
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,8 +42,8 @@ const Signin = () => {
                 },
             }).then(res => {
                 if (res.status === 200) {
-                navigate('/todo');
-            }
+                    navigate('/todo');
+                }
             }).catch((err) => {
                 console.error('회원가입 오류 발생', err);
                 alert(err.response.data.message);
@@ -95,7 +90,7 @@ const Signin = () => {
                         data-testid="signin-button"
                         type="submit"
                         disabled={emailError || passwordError}
-                        >
+                    >
                         로그인
                     </button>
                 </div>
