@@ -56,13 +56,23 @@
   justify-content: center;
 
   background-color:rgb(240, 244, 247);
-  border: 1px solid black;
+  border: 1px solid gray;
   border-radius: 3px;
   margin: 10px;
   padding: 0 20px 20px 20px;
-  width: 500px;
+  width: 400px;
+}
+
+.todo-box {
+  width: 80%;
 }
 
 .submit-button {
   margin-top: 20px;
+}
+
+.error-text {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
 }

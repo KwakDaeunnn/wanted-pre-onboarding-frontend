@@ -66,27 +66,27 @@ const Signin = () => {
             <div className='sign-box'>
                 <h2>로그인</h2>
                 <div>
-                    <label>이메일</label>
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;이메일</label>
                     <input
                         data-testid="email-input"
                         type="text"
-                        placeholder="example@abc.com"
+                        name="email"
                         onChange={handleChange}
                         value={values.email}
                     />
                 </div>
-                {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
+                {emailError && <p className='error-text'>{emailError}</p>}
                 <div>
                     <label>패스워드</label>
                     <input
                         data-testid="password-input"
                         type="password"
-                        placeholder="******** (8자 이상)"
+                        name="password"
                         onChange={handleChange}
                         value={values.password}
                     />
                 </div>
-                {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+                {passwordError && <p className='error-text'>{passwordError}</p>}
                 <div>
                     <button className='submit-button'
                         data-testid="signin-button"

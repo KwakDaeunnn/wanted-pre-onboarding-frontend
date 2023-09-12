@@ -94,7 +94,20 @@ function TodoList() {
   return (
     <div className='sign-box'>
       <h2>Todo List</h2>
-      <ul>
+      
+      <div>
+        <input
+          data-testid="new-todo-input"
+          type="text"
+          value={newTodo}
+          onChange={e => setNewTodo(e.target.value)}
+        />
+        <button data-testid="new-todo-add-button" onClick={createTodo}>
+          추가
+        </button>
+      </div>
+      
+      <ul className='todo-box'>
         {todos.map((todo) => (
           <li key={todo.id}>
             <label>
@@ -123,24 +136,13 @@ function TodoList() {
               </>
             ) : (
               <>
-                <button data-testid="modify-button" onClick={() => setEditId(todo.id)}>수정</button>
+                <button data-testid="modify-button" onClick={() => { setEditId(todo.id); setEditedTodo(todo.todo); }}>수정</button>
                 <button data-testid="delete-button" onClick={() => deleteTodo(todo.id)}>삭제</button>
               </>
             )}
           </li>
         ))}
       </ul>
-      <div>
-        <input
-          data-testid="new-todo-input"
-          type="text"
-          value={newTodo}
-          onChange={e => setNewTodo(e.target.value)}
-        />
-        <button data-testid="new-todo-add-button" onClick={createTodo}>
-          추가
-        </button>
-      </div>
     </div>
   );
 }

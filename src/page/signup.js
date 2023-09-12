@@ -67,30 +67,32 @@ const Signup = () => {
             <div className='sign-box'>
                 <h2>회원가입</h2>
                 <div>
-                    <label>이메일</label>
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;이메일</label>
                     <input
                         data-testid="email-input"
                         type="text"
+                        name="email"
                         placeholder='example@abc.com'
                         onChange={handleChange}
                         value={values.email}
                     />
                 </div>
-                {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
+                {emailError && <p className='error-text'>{emailError}</p>}
                 <div>
                     <label>패스워드</label>
                     <input
                         data-testid="password-input"
                         type="password"
+                        name="password"
                         placeholder='********'
                         onChange={handleChange}
                         value={values.password}
                     />
                 </div>
+                {passwordError && <p className='error-text'>{passwordError}</p>}
                 <p className='condition-message'>
-                    *이메일은 @를 포함해야 하며, 비밀번호는 8자 이상 입력해주세요.
+                    *이메일은 @를 포함하고, 비밀번호는 8자 이상 입력해주세요.
                 </p>
-                {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
                 <div>
                     <button className='submit-button'
                         data-testid="signup-button"
