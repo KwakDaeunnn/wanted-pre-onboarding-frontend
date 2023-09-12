@@ -7,27 +7,29 @@ import './App.css';
 
 function Routing() {
   return (
-    <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/signup">회원 가입</Link>
-          </li>
-          <li>
-            <Link to="/signin">로그인</Link>
-          </li>
-          <li>
-            <Link to="/todo">Todo</Link>
-          </li>
-        </ul>
-      </nav>
+    <dev className='box'>
+      <Router>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/signup">회원 가입</Link>
+            </li>
+            <li>
+              <Link to="/signin">로그인</Link>
+            </li>
+            <li>
+              <Link to="/todo">Todo</Link>
+            </li>
+          </ul>
+        </nav>
 
-      <Routes>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/todo" element={<Todo />} />
-      </Routes>
-    </Router>
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/todo" element={<Todo />} />
+        </Routes>
+      </Router>
+    </dev>
   );
 }
 

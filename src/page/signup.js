@@ -66,9 +66,6 @@ const Signup = () => {
         <form onSubmit={handleSubmit}>
             <div className='sign-box'>
                 <h2>회원가입</h2>
-                <p className='condition-message'>
-                    *이메일은 @를 포함해야 하며, 비밀번호는 8자 이상 입력해주세요.
-                </p>
                 <div>
                     <label>이메일</label>
                     <input
@@ -90,6 +87,9 @@ const Signup = () => {
                         value={values.password}
                     />
                 </div>
+                <p className='condition-message'>
+                    *이메일은 @를 포함해야 하며, 비밀번호는 8자 이상 입력해주세요.
+                </p>
                 {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
                 <div>
                     <button className='submit-button'
