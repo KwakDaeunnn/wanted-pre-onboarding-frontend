@@ -48,7 +48,7 @@ const Signin = () => {
                     navigate('/todo');
                 }
             }).catch(err => {
-                console.error('로그인 오류', err);
+                console.error('로그인 실패', err);
                 alert(err.response.data.message);
             });
         }
@@ -59,6 +59,7 @@ const Signin = () => {
         const name = e.target.name;
         setValues({ ...values, [name]: value });
     };
+
 
     return (
         <form onSubmit={handleSubmit}>

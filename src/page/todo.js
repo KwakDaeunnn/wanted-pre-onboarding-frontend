@@ -20,9 +20,10 @@ function TodoList() {
         Authorization: `Bearer ${localStorage.getItem('access_token')}`,
       },
     }).then(res => {
+        console.log('Todo 목록 가져오기 성공');
         setTodo(res.data);
       }).catch(err => {
-        console.error('Todo 목록을 가져오는 과정에서 오류 발생', err);
+        console.error('Todo 목록 가져오기 실패', err);
       });
   }
 
@@ -40,10 +41,11 @@ function TodoList() {
         isCompleted: false,
       },
     }).then(res => {
+        console.log('Todo 생성 성공');
         setNewTodo('');
         fetchTodoList();
       }).catch(err => {
-        console.error('Todo 생성 과정에서 오류 발생', err);
+        console.error('Todo 생성 실패', err);
       });
   }
 
@@ -63,11 +65,12 @@ function TodoList() {
       },
       data: updatedTodoData,
     }).then(res => {
+        console.log('Todo 수정 성공');
         fetchTodoList();
         setEditId(null);
         setEditedTodo('');
       }).catch(err => {
-        console.error('Todo 수정 과정에서 오류 발생', err);
+        console.error('Todo 수정 실패', err);
       });
   }
 
@@ -80,11 +83,13 @@ function TodoList() {
         Authorization: `Bearer ${localStorage.getItem('access_token')}`,
       },
     }).then(res => {
+        console.log('Todo 삭제 성공');
         fetchTodoList();
       }).catch(err => {
-        console.error('Todo 삭제 과정에서 오류 발생', err);
+        console.error('Todo 삭제 실패', err);
       });
   }
+
 
   return (
     <div>

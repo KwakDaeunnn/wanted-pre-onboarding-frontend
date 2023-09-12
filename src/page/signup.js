@@ -49,7 +49,7 @@ const Signup = () => {
                     navigate('/signin')
                 }
             }).catch(err => {
-                console.error('회원가입 오류 발생', err);
+                console.error('회원가입 실패', err);
                 alert(err.response.data.message);
             })
         };
