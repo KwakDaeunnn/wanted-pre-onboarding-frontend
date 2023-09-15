@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function TodoList() {
   const [todos, setTodo] = useState([]);
   const [newTodo, setNewTodo] = useState('');
   const [editId, setEditId] = useState(null);
   const [editedTodo, setEditedTodo] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchTodoList();
@@ -90,11 +92,19 @@ function TodoList() {
       });
   }
 
+  // 로그아웃
+  function logout() {
+    // 로컬 스토리지에서 토큰 제거
+    localStorage.removeItem('access_token');
+    navigate('/signin');
+  }
+
 
   return (
+
+
     <div className='sign-box'>
       <h2>Todo List</h2>
-      
       <div>
         <input
           data-testid="new-todo-input"
@@ -143,6 +153,9 @@ function TodoList() {
           </li>
         ))}
       </ul>
+      
+      <button onClick={logout}>로그아웃</button>
+      
     </div>
   );
 }
