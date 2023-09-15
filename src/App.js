@@ -7,7 +7,6 @@ import './App.css';
 
 function Routing() {
   return (
-    <dev className='box'>
       <Router>
         <nav>
           <ul>
@@ -29,7 +28,6 @@ function Routing() {
           <Route path="/todo" element={<Todo />} />
         </Routes>
       </Router>
-    </dev>
   );
 }
 
