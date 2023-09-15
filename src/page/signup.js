@@ -12,24 +12,36 @@ const Signup = () => {
         if (localStorage.getItem('token') !== null) {
             navigate('/todo');
         }
+
+        
     }, [navigate]);
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
+    
+    const handleChange = (e) => {
+        const value = e.target.value;
+        const name = e.target.name;
+        setValues({ ...values, [name]: value });
+        
         // 이메일 유효성 검사 (@ 포함 여부 확인)
-        if (!values.email.includes('@')) {
-            setEmailError('이메일 형식에 맞지 않습니다.');
-        } else {
-            setEmailError('');
+        if (name === 'email') {
+            if (!value.includes('@')) {
+                setEmailError('이메일 형식에 맞지 않습니다.');
+            } else {
+                setEmailError('');
+            }
         }
 
         // 비밀번호 유효성 검사 (8자 이상)
-        if (values.password.length < 8) {
-            setPasswordError('비밀번호 형식에 맞지 않습니다.');
-        } else {
-            setPasswordError('');
+        if (name === 'password') {
+            if (value.length < 8) {
+                setPasswordError('비밀번호 형식에 맞지 않습니다.');
+            } else {
+                setPasswordError('');
+            }
         }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
         // 유효성 검사 통과 시 회원가입 후 로그인 페이지 이동
         if (!emailError && !passwordError) {
@@ -53,12 +65,6 @@ const Signup = () => {
                 alert(err.response.data.message);
             })
         };
-    };
-
-    const handleChange = (e) => {
-        const value = e.target.value;
-        const name = e.target.name;
-        setValues({ ...values, [name]: value });
     };
 
 
